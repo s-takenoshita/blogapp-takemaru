@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'annotate'                # add 2021/10/16
 gem 'better_errors'           # add 2021/10/16
 gem 'binding_of_caller'       # add 2021/10/16
+gem 'devise'                  # add 2021/10/17
 gem 'faker'                   # add 2021/10/14
 gem 'hamlit'                  # add 2021/10/16
 
