@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   # root to: 'home#index'
   root to: 'articles#index'
 
-  resources :articles
+  resources :articles do
+    resource :comments, only: [:new, :create]
+  end
 end
