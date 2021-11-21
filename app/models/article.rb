@@ -7,6 +7,11 @@
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
+#
+# Indexes
+#
+#  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
     validates :title, presence: true
@@ -19,6 +24,8 @@ class Article < ApplicationRecord
 
     validate :validate_title_and_content_length
 
+    belongs_to :user
+
     def display_created_at
         I18n.l(self.created_at, format: :default)
     end
@@ -26,6 +33,6 @@ class Article < ApplicationRecord
     private
     def validate_title_and_content_length
         char_count = self.title.length + self.content.length
-        errors.add(:content,'タイトルと内容は、合計100文字以上必要です。') unless char_count > 100
+        errors.add(:content,'タイトルと内容は、合計20文字以上必要です。') unless char_count > 20
     end
 end
