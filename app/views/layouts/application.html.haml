@@ -18,9 +18,10 @@
         %p.header_pageTitle BlogApp
       - if user_signed_in?
         .dropdown
-          = image_tag 'default-avatar.png', class: 'header_abatar dropbtn'
+          = image_tag current_user.avatar_image, class: 'header_abatar dropbtn'
           .dropdown-content
-            %a{:href => "http://"} プロフィール
+            -# %a{:href => "http://"} プロフィール
+            = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: {method: 'delete'}
             -# %a{:href => "http://"} ログアウト
       - else
