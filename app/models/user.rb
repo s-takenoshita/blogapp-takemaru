@@ -25,13 +25,31 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  delegate :birthday, :age, :gender, to: :profile, allow_nil: true
+
   def has_written?(article)
     articles.exists?(id: article.id)
   end
 
   def display_name
-    self.email.split('@').first
+    # if profile && profile.nickname
+    #   profile.nickname
+    # else
+    #   self.email.split('@').first
+    # end
+
+    # ぼっち演算子（&.）　profile が nill でない時に nickname を使用する。
+    profile&.nickname || self.email.split('@').first
   end
+
+  # --- delegate で対応 ---
+  # def birthday
+  #   profile&.birthday
+  # end
+
+  # def gender
+  #   profile&.gender
+  # end
 
   def prepare_profile
     profile || build_profile
