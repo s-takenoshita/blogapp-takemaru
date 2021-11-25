@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   resource :profile, onry: [:show, :edit, :update]
+  resources :favorites, only: [:index]
 end
