@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: 'articles#index'
 
   resources :articles do
-    resource :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create]
+    resource :like, only:[:create, :destroy]
   end
 
   resource :profile, onry: [:show, :edit, :update]
