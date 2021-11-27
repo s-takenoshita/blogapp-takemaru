@@ -10,6 +10,9 @@
 taro = User.find_by(email: 'taro@example.com')
 hanako = User.find_by(email: 'hanako@example.com')
 
+# taro = User.create!(email: 'taro@example.com', password: '99999999')
+# hanako = User.create!(email: 'hanako@example.com', password: '99999999')
+
 5.times do
     taro.articles.create(
         title: Faker::Lorem.sentence(word_count: 5),
