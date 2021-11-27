@@ -40,7 +40,7 @@ group :development, :test do
   gem 'pry-byebug'            # add 2021/10/16
   gem 'rubocop'               # add 2021/10/16
   gem 'rubocop-rails'         # add 2021/10/16
-
+  gem 'dotenv-rails'          # add 2021/11/27
 end
 
 group :development do
