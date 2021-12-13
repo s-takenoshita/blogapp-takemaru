@@ -34,7 +34,7 @@ gem 'hamlit'                      # add 2021/10/16
 gem 'aws-sdk-s3', require: false  # add 2021/11/27
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
