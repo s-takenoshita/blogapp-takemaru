@@ -56,7 +56,11 @@ class User < ApplicationRecord
   end
 
   def follow!(user)
-    following_relationships.create!(following_id: user.id)
+    if user.is_a?(User)
+      following_relationships.create!(following_id: user.id)
+    else
+      following_relationships.create!(following_id: user)
+    end
   end
 
   def unfollow!(user)
@@ -64,6 +68,9 @@ class User < ApplicationRecord
     relation.destroy!
   end
 
+  def has_followed?(user)
+    following_relationships.exists?(following_id: user.id)
+  end
   # --- delegate で対応 ---
   # def birthday
   #   profile&.birthday
