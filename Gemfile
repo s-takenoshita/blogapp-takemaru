@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'annotate'                    # add 2021/10/16
+gem 'active_decorator'            # add 2021/12/16
 gem 'better_errors'               # add 2021/10/16
 gem 'binding_of_caller'           # add 2021/10/16
 gem 'devise'                      # add 2021/10/17
