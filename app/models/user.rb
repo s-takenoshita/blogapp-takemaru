@@ -44,17 +44,6 @@ class User < ApplicationRecord
     likes.exists?(article_id: article.id)
   end
 
-  def display_name
-    # if profile && profile.nickname
-    #   profile.nickname
-    # else
-    #   self.email.split('@').first
-    # end
-
-    # ぼっち演算子（&.）　profile が nill でない時に nickname を使用する。
-    profile&.nickname || self.email.split('@').first
-  end
-
   def follow!(user)
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
