@@ -23,12 +23,10 @@ import $ from 'jquery'
 import axios from 'axios'
 
 document.addEventListener('turbolinks:load', () => {
-  console.log('--> start!')
-  $('.article_title').on('click', () => {
-    console.log('--> clicked!')
-    axios.get('/')
-      .then((response) => {
-        console.log(response)
-      })
-  })
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+  axios.get(`/articles/${articleId}/like`)
+    .then((response) => {
+      console.log(response)
+    })
 })
