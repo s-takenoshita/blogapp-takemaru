@@ -25,8 +25,15 @@ import axios from 'axios'
 document.addEventListener('turbolinks:load', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
+  debugger
   axios.get(`/articles/${articleId}/like`)
     .then((response) => {
+      const hasLiked = response.data.hasLiked
+      if (hasLiked) {
+        $('.active-heart').removeClass('hidden')
+      } else {
+        $('.inactive-heart').removeClass('hidden')
+      }
       console.log(response)
     })
 })
