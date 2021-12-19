@@ -38,4 +38,15 @@ document.addEventListener('turbolinks:load', () => {
       const hasLiked = response.data.hasLiked
       handleHeartDisplay(hasLiked)
     })
+  
+  $('.inactive-heart').on('click', () => {
+    axios.post(`/articles/${articleId}/like`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+  })
 })
