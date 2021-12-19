@@ -20,9 +20,22 @@ require("trix")
 require("@rails/actiontext")
 
 import $ from 'jquery'
+import axios from 'axios'
 
-document.addEventListener('DOMContentLoaded', () => {
-  $('.article_title').on('click', () => {
-    window.alert('Clicked')
-  })
+const handleHeartDisplay = (hasLiked) => {
+  if (hasLiked) {
+    $('.active-heart').removeClass('hidden')
+  } else {
+    $('.inactive-heart').removeClass('hidden')
+  }
+}
+
+document.addEventListener('turbolinks:load', () => {
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+  axios.get(`/articles/${articleId}/like`)
+    .then((response) => {
+      const hasLiked = response.data.hasLiked
+      handleHeartDisplay(hasLiked)
+    })
 })
