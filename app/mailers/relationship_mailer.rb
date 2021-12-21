@@ -1,4 +1,4 @@
-class RelationshipMailer < ActionMailer::Base
+class RelationshipMailer < ApplicationMailer
   def new_follower(user, follower)
     @user = user
     @follower = follower
