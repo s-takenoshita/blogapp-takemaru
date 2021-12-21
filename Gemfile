@@ -59,6 +59,8 @@ group :development do
   gem 'erb2haml'              # add 2021/10/16
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'                   # add 2021/12/21
+  gem 'letter_opener_web', '~> 1.0e'    # add 2021/12/21
 end
 
 group :test do
