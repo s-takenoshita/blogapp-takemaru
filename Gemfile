@@ -34,6 +34,7 @@ gem 'devise'                      # add 2021/10/17
 gem 'faker'                       # add 2021/10/14
 gem 'hamlit'                      # add 2021/10/16
 gem 'aws-sdk-s3', require: false  # add 2021/11/27
+gem 'sidekiq'                     # add 2021/12/25
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
