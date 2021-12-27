@@ -49,7 +49,7 @@ group :development, :test do
   gem 'rubocop'               # add 2021/10/16
   gem 'rubocop-rails'         # add 2021/10/16
   gem 'dotenv-rails'          # add 2021/11/27
-
+  gem 'rspec-rails'           # add 2021/12/27
 end
 
 group :development do
