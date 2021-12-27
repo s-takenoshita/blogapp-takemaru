@@ -8,17 +8,19 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root to: 'home#index'
   root to: 'articles#index'
-  resource :timeline, only: [:show]
 
   resources :articles
 
   resources :accounts, only: [:show] do
-    resources :follows, only: [:create]
     resources :unfollows, only: [:create]
+    resources :follows, only: [:create]
   end
 
-  resource :profile, onry: [:show, :edit, :update]
-  resources :favorites, only: [:index]
+  scope module: :apps do
+    resources :favorites, only: [:index]
+    resource :profile, onry: [:show, :edit, :update]
+    resource :timeline, only: [:show]
+  end
 
   namespace :api, defaults: {format: :json} do
     scope '/articles/:article_id' do
