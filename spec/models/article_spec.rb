@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  user = User.create!({
-    email: 'test6@example.com',
-    password: '99999999'
-  })
+  let!(:user) { create(:user) }
 
   context 'タイトルと記事が入力されている場合（その１）' do
     before do
@@ -14,32 +11,27 @@ RSpec.describe Article, type: :model do
       })
     end
     it '記事を保存できる。' do
+      puts user.email
       expect(@article).to be_valid
     end
   end
 
   context 'タイトルと記事が入力されている場合（その２）' do
-    let!(:article) do
-      user.articles.build({
-        title: Faker::Lorem.characters(number: 20),
-        content: Faker::Lorem.characters(number: 100)
-      })
-    end
+    let!(:article) { build(:article, user: user) }
     it '記事を保存できる。' do
       expect(article).to be_valid
     end
   end
 
   context 'タイトルが１文字の場合' do
-    let!(:article) do
-      user.articles.create({
-        title: Faker::Lorem.characters(number: 1),
-        content: Faker::Lorem.characters(number: 100)
-      })
+    let!(:article) { build(:article, title: Faker::Lorem.characters(number: 1), user: user) }
+    before do
+      article.save
     end
     it '記事を保存できない。' do
       # byebug
-      expect(article.errors.messages[:title][0]).to eq('は４文字以上で入力してください')
+      puts article.errors.messages[:title][0]
+      expect(article.errors.messages[:title][0]).to eq("は4文字以上で入力してください")
     end
   end
 end
