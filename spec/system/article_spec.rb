@@ -11,4 +11,12 @@ RSpec.describe 'Articles', type: :system do
       puts article.title
     end
   end
+
+  it 'クリックして記事の表際を表示する' do
+    visit root_path
+    article = articles.first
+    click_on article.title
+    expect(page).to have_css('.article_title', text: article.title)
+    expect(page).to have_css('.article_content', text: article.content.to_plain_text)
+  end
 end
